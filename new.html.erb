@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+input[type="text"], select {
+    margin-left: 100px;
+   padding: 5px;
+  
+}
+
+.red {
+  color: red;
+}
+
+</style>
+</head>
+
+<body>
+
+  <form action="#" method="post">
+  Ho ten:<br>
+  <input type="text" name="name" id="name" required pattern="a-z"> Họ tên bắt buộc
+  <br>
+  Lop:<br>
+  <input type="text" name="class1" id="class1"  required pattern="a-z" >Lớp học bắt buộc
+  <br>
+  Diem toan:<br>
+  <input type="text" name="diemToan" id="diemToan"  required pattern="^(10|[0-9])"> Điểm toán phải nhập là số trong khoảng 0 đến 10
+  <br>
+  Diem ly:<br>
+  <input type="text" name="diemLy" id="diemLy" required pattern ="^(10|[0-9])"> Điểm lý phải nhập là số trong khoảng 0 đến 10
+  <br>
+  Diem hoa:<br>
+  <input type="text" name="diemHoa" id="diemHoa" required patterns ="^(10|[0-9])"> Điểm hóa phải nhập là số trong khoảng 0 đến 10
+
+  <br><br>
+
+ <input type="submit" value="Submit" onclick="nhap();">
+
+</form> 
+
+<br><br>
+
+<table id="mytable">
+  <tr>
+    <th>Stt</th>
+    <th>Họ Tên</th>
+    <th>Điểm Toán</th>
+    <th>Điểm Lý</th>
+    <th>Điểm Hóa</th>
+    <th>Trung Bình</th>
+  </tr>
+
+
+
+</table>
+
+<br><br>
+<input type="button"  value="Tính trung bình"> 
+<br><br>
+<input type="button" id="HS" value="Tìm HS" onclick="myFunction">
+
+<br><br>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" >
+</script>
+<script type="text/javascript">
+
+   function nhap(){
+          var name = $('#name').val();
+          var class1 = $('#class1').val();
+          var diemToan = $('#diemToan').val();
+          var diemLy = $('#diemLy').val();
+          var diemHoa = $('#diemHoa').val();
+          var mid = (parseInt(diemToan)+parseInt(diemHoa)+parseInt(diemLy))/3;
+
+          var row ="<tr>" +
+                    "<td>"+class1+"</td>" +
+                    "<td>"+name+"</td>" +
+                    "<td>"+diemToan+"</td>" +
+                    "<td>"+diemLy+"</td>" +
+                    "<td>"+diemHoa+"</td>" +
+                    "<td>"+mid+"</td>"+
+                   "</tr>";
+                   
+      $("#mytable tr:last").after(row);
+
+      if(mid >= 8) {
+            $("td").addClass("red");
+      };
+
+ };
+
+
+  function myFunction() {
+          var diemToan = $('#diemToan').val();
+          var diemLy = $('#diemLy').val();
+          var diemHoa = $('#diemHoa').val();
+          var mid = (parseInt(diemToan)+parseInt(diemHoa)+parseInt(diemLy))/3;
+
+          if(mid >= 8) {
+            $("td").addClass("red");
+          }
+  }
+  
+
+</script>
+
+
+</body>
+
+</html>
